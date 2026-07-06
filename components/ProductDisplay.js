@@ -19,9 +19,6 @@ const productDisplay = {
           <p v-else-if="inventory <= 10 && inventory > 0">Almost out of Stock</p>
           <p v-else>Out of Stock</p>
 
-          <ul>
-            <li v-for="detail in details">{{ detail }}</li>
-          </ul>
 
           <div
             v-for="(variant, index) in variants"
@@ -35,6 +32,7 @@ const productDisplay = {
             @click="addToCart" :class="{disabledButton: !inStock}">
             Add To Cart
           </button>
+          <p v-if="onSale"> {{ saleMessage }}</p>
           <product-details :details="details"></product-details>
 
           <button class="button remove-button" @click="removeFromCart">Remove From Cart</button>
