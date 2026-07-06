@@ -1,7 +1,20 @@
-const { createApp, ref, computed } = Vue
+const { createApp } = Vue
 
-createApp({
+const app = createApp({
     setup(){
+        const cart = ref(0)
+        const premium = ref(true)
+        return {
+            cart,
+            premium
+        }
+    }
+})
+app.component('product-display', productDisplay)
+app.component('product-details', productDetails)
+app.mount('#app')
+
+/*
         const product = ref('Boots')
         const brand = ref('SE 331')
         const inventory = ref(100)
@@ -26,7 +39,6 @@ createApp({
         const onSale = ref(true)
         const description = ref('Description')
         const url = ref('https://www.camt.cmu.ac.th')
-        const cart = ref(0)
 
         function addToCart(){
             cart.value +=1
@@ -64,3 +76,4 @@ createApp({
     }
 
 }).mount('#app')
+*/
