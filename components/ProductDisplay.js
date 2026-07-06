@@ -19,6 +19,7 @@ const productDisplay = {
           <p v-else-if="inventory <= 10 && inventory > 0">Almost out of Stock</p>
           <p v-else>Out of Stock</p>
 
+          <p> Shipping: {{ shipping }} </p>
 
           <div
             v-for="(variant, index) in variants"
