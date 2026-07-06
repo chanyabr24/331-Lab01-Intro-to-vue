@@ -40,6 +40,9 @@ const productDisplay = {
           <button class="button remove-button" @click="removeFromCart">Remove From Cart</button>
 
           </div>
+          <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+          <review-form @review-submitted="addReview"></review-form>
+
           </div>
 
           `,
@@ -111,12 +114,14 @@ const productDisplay = {
          return 30
         }
     })
-    function updateCart(id){
-        cart.value.push(id)
-    }
 
     function removeFromCart() {
       emit('remove-from-cart', variants.value[selectedVariant.value].id)
+    }
+
+    const reviews = ref([])
+    function addReview(review){
+        reviews.value.push(review)
     }
 
 
@@ -135,8 +140,9 @@ const productDisplay = {
       updateVariant,
       shipping,
       saleMessage,
-      updateCart,
-      removeFromCart
+      removeFromCart,
+      reviews,
+      addReview
     }
   }
 }
